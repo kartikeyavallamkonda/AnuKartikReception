@@ -20,5 +20,35 @@
 <div><section class="details"><div class="detail"><div class="icon">▣</div><div class="label">Date</div><div class="value"><strong>Saturday, 29 August 2026</strong>10:30 AM onwards</div></div>
 <div class="detail"><div class="icon">⌖</div><div class="label">Venue</div><div class="value"><strong>Srivari Bhimmas</strong>Yelahanka, Bengaluru</div></div>
 <div class="detail"><div class="icon">♥</div><div class="label">Celebration</div><div class="value">Join us for an evening of<br><strong>Love, Laughter & Memories</strong></div></div></section>
-<div class="actions"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Srivari+Bhimmas+Yelahanka" target="_blank" rel="noopener">Get Directions</a><a class="btn alt" href="#" onclick="return false">Add to Calendar</a></div></div></section>
-<footer class="footer"><p>We can't wait to celebrate with you!</p><p><strong>Kartikeya & Sai Anuradha</strong></p></footer></section></main></body></html>
+<div class="actions"><a class="btn" href="https://www.google.com/maps/search/?api=1&query=Srivari+Bhimmas+Yelahanka" target="_blank" rel="noopener">Get Directions</a><a class="btn alt" href="javascript:void(0)" onclick="addToCalendar()">Add to Calendar</a></div></div></section>
+<footer class="footer"><p>We can't wait to celebrate with you!</p><p><strong>Kartikeya & Sai Anuradha</strong></p></footer></section></main>
+<script>
+function addToCalendar() {
+  const event = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//Kartikeya & Sai Anuradha//Wedding Reception//EN',
+    'CALSCALE:GREGORIAN',
+    'BEGIN:VEVENT',
+    'UID:kartikeya-sai-anuradha-reception-20260829@example.com',
+    'DTSTAMP:20260820T000000Z',
+    'DTSTART;TZID=Asia/Kolkata:20260829T103000',
+    'DTEND;TZID=Asia/Kolkata:20260829T133000',
+    'SUMMARY:Kartikeya & Sai Anuradha — Wedding Reception',
+    'LOCATION:Srivari Bhimmas, Yelahanka, Bengaluru',
+    'DESCRIPTION:Wedding reception of Kartikeya & Sai Anuradha. We look forward to celebrating with you!',
+    'END:VEVENT',
+    'END:VCALENDAR'
+  ].join('\r\n');
+  const blob = new Blob([event], {type:'text/calendar;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'Kartikeya-Sai-Anuradha-Wedding-Reception.ics';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+</script>
+</body></html>
